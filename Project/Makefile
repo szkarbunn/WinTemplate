@@ -92,9 +92,11 @@ ifeq ($(BUILD),debug)
 else ifeq ($(BUILD),release)
 	CXXFLAGS += -O2 -DNDEBUG
 	LIBS := $(foreach lib,$(WX_LIBS_RELEASE),-l$(lib))
+	LDFLAGS_EXTRA := -Wl,-subsystem,windows
 else
 $(error BUILD must be 'debug' or 'release')
 endif
+
 CXXFLAGS += $(INCS)
 LIBS += $(foreach lib,$(WIN_LIBS),-l$(lib))
 
@@ -115,7 +117,7 @@ endif
 $(OUT_EXE): $(OBJS)
 	@echo "[LD] $@"
 	@mkdir -p $(BIN_DIR)
-	$(CXX) $^ -o $@ $(LDFLAGS)
+	$(CXX) $^ -o $@ $(LDFLAGS_EXTRA) $(LDFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@echo "[CC] $<"

@@ -1,6 +1,6 @@
 #include "Logger.h"
 
-#ifdef DEBUG
+#ifndef NDEBUG
 
 #include <iostream>
 #include <ctime>
@@ -25,5 +25,12 @@ void Logger::Log(LogLevel level, const std::string& msg) {
 void Logger::Info(const std::string& msg)   { Log(LogLevel::LG_INFO, msg); }
 void Logger::Warn(const std::string& msg)   { Log(LogLevel::LG_WARNING, msg); }
 void Logger::Error(const std::string& msg)  { Log(LogLevel::LG_ERROR, msg); }
+
+#else
+
+// Release build – puste implementacje
+void Logger::Info(const std::string&)  {}
+void Logger::Warn(const std::string&)  {}
+void Logger::Error(const std::string&) {}
 
 #endif
