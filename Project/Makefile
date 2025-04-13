@@ -49,6 +49,7 @@ PROD_DIR := $(BIN_DIR)/PRODUCTION
 #******************************************************************************
 SRCS :=
 SRCS += $(SRC_DIR)/main.cpp
+SRCS += $(SRC_DIR)/Logger.cpp
 
 RES_SRC := $(ROOT_DIR)/resource/resource.rc
 OBJS := $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)

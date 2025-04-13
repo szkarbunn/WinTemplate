@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <chrono>
 #include <thread>
-
+#include "Logger.h"
 
 class MyApp : public wxApp {
 public:
@@ -27,6 +27,7 @@ public:
 wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit() {
+	Logger::Info("App started.");
     MyFrame* frame = new MyFrame("Minimal wxWidgets App");
     frame->Show(true);
     return true;
