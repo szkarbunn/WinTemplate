@@ -50,7 +50,9 @@ PROD_DIR := $(BIN_DIR)/PRODUCTION
 SRCS :=
 SRCS += $(SRC_DIR)/main.cpp
 
+RES_SRC := $(ROOT_DIR)/resource/resource.rc
 OBJS := $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+OBJS += $(OBJ_DIR)/resource.res.o
 DEPS := $(OBJS:.o=.d)
 
 #******************************************************************************
@@ -118,6 +120,11 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@echo "[CC] $<"
 	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
+
+$(OBJ_DIR)/resource.res.o: $(ROOT_DIR)/resource/resource.rc
+	@echo "[RC] $<"
+	@mkdir -p $(dir $@)
+	windres $< -O coff -o $@
 
 #******************************************************************************
 # Pre/Post Build
