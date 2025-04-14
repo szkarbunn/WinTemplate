@@ -77,10 +77,14 @@ LIB_DIRS += -L$(ROOT_DIR)/libs/wxWidget/lib/gcc_lib
 #******************************************************************************
 # Libraries wxWidgets & Windows
 #******************************************************************************
-WX_LIBS_DEBUG += wxmsw32ud wxmsw32ud_gl wxexpatd wxjpegd wxpngd wxregexud wxscintillad wxtiffd wxzlibd
-WX_LIBS_RELEASE += wxmsw32u wxmsw32u_gl wxexpat wxjpeg wxpng wxregexu wxscintilla wxtiff wxzlib
+#-Wl,--start-group -lwxmsw33ud_core -lwxbase33ud -lwxjpegd ... -Wl,--end-group
+#1.Wszystkie wxmsw33ud_* (GUI i wyżej)
+#2.Potem wxbase33ud, wxbase33ud_net, wxbase33ud_xml
+#3.Na końcu wxjpegd, wxpngd, wxzlibd, wxregexud, itp.
+WX_LIBS_DEBUG += wxmsw33ud_core wxbase33ud wxbase33ud_net wxbase33ud_xml wxexpatd wxjpegd wxlexillad wxmsw33ud_adv wxmsw33ud_aui wxmsw33ud_gl wxmsw33ud_html wxmsw33ud_media wxmsw33ud_propgrid wxmsw33ud_ribbon wxmsw33ud_richtext wxmsw33ud_stc wxmsw33ud_webview wxmsw33ud_xrc wxpngd wxregexud wxscintillad wxtiffd wxzlibd
+WX_LIBS_RELEASE += wxmsw33u_core wxbase33u wxbase33u_net wxbase33u_xml wxexpat wxjpeg wxlexilla wxmsw33u_adv wxmsw33u_aui wxmsw33u_gl wxmsw33u_html wxmsw33u_media wxmsw33u_propgrid wxmsw33u_ribbon wxmsw33u_richtext wxmsw33u_stc wxmsw33u_webview wxmsw33u_xrc wxpng wxregexu wxscintilla wxtiff wxzlib
 
-WIN_LIBS += kernel32 user32 gdi32 comdlg32 ole32 shell32 oleaut32 uuid comctl32 shlwapi version uxtheme winspool imm32 winmm advapi32 oleacc
+WIN_LIBS += kernel32 user32 gdi32 comdlg32 ole32 shell32 oleaut32 uuid comctl32 shlwapi version uxtheme winspool imm32 winmm advapi32 oleacc gdiplus msimg32
 
 #******************************************************************************
 # Compiler Flags
