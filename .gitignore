@@ -35,8 +35,8 @@
 */build
 
 # WxWidget lib
-*/libs/wxWidget/dll
-*/libs/wxWidget/include
-*/libs/wxWidget/lib
-*/libs/wxWidget/wxWidgetSrc
+*/libs/wxWidget/dll/
+*/libs/wxWidget/include/
+*/libs/wxWidget/lib/
+*/libs/wxWidget/wxWidgetSrc/
 
